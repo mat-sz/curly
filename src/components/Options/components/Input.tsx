@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 const Input: React.FC<{
     value: string,
-    setValue: React.Dispatch<React.SetStateAction<string>>,
+    setValue: (value: string) => void,
     placeholder?: string,
 }> = ({ value, setValue, placeholder }) => {
     const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {

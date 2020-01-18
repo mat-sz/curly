@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 const Select: React.FC<{
     value: string,
-    setValue: React.Dispatch<React.SetStateAction<string>>,
+    setValue: (value: string) => void,
     options: string[],
     placeholder?: string,
 }> = ({ value, setValue, options, placeholder }) => {
