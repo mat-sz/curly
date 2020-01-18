@@ -16,5 +16,14 @@
         cursor: pointer;
         border-top: 1px solid #222;
         padding: 10px 20px;
+        outline: none;
+
+        &:hover {
+            background: #1f1f33;
+        }
+
+        &::-moz-focus-inner {
+            border: 0;
+        }  
     }
 }
