@@ -1,0 +1,17 @@
+.options {
+    background: #ddd;
+
+    & > div {
+        display: flex;
+        border-bottom: 1px solid #ccc;
+
+        select {
+            border-right: 1px solid #ccc;
+            max-width: 25%;
+        }
+
+        & > * {
+            flex: 1;
+        }
+    }
+}
