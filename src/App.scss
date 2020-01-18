@@ -21,18 +21,22 @@ code {
     display: flex;
     align-items: center;
     flex-direction: column;
-}
 
-.logo {
-    font-size: 36px;
-}
+    & > div {
+        border-radius: 5px;
+        overflow: hidden;
+        max-width: 500px;
+        width: 100%;
+        margin-top: 20px;
+    }
 
-.output, .options {
-    border-radius: 5px;
-    overflow: hidden;
-    max-width: 500px;
-    width: 100%;
-    margin-top: 20px;
+    .logo {
+        font-size: 36px;
+    }
+    
+    .tagline {
+        margin-top: 0;
+    }
 }
 
 input, button, textarea, select {
@@ -51,23 +55,6 @@ select {
     background-size: 15%;
     background-repeat: no-repeat;
     background-position: right center;
-}
-
-.output {
-    background: #111;
-    color: white;
-
-    pre {
-        padding: 10px 20px;
-    }
-    
-    button {
-        color: #ddd;
-        width: 100%;
-        cursor: pointer;
-        border-top: 1px solid #222;
-        padding: 10px 20px;
-    }
 }
 
 .options {

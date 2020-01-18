@@ -1,0 +1,20 @@
+.output {
+    background: #111;
+    color: white;
+
+    pre {
+        padding: 10px 20px;
+
+        span {
+            user-select: none;
+        }
+    }
+    
+    button {
+        color: #ddd;
+        width: 100%;
+        cursor: pointer;
+        border-top: 1px solid #222;
+        padding: 10px 20px;
+    }
+}
