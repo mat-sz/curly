@@ -11,12 +11,16 @@ export interface KVObject {
     value: string,
 };
 
+const methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'];
+const methodsWithFormData = ['POST', 'PUT', 'PATCH', 'DELETE']; 
+
 const Options: React.FC<{
     setCommand: React.Dispatch<React.SetStateAction<string>>,
 }> = ({ setCommand }) => {
     const [ method, setMethod ] = useState('GET');
     const [ url, setUrl ] = useState('');
     const [ headers, setHeaders ] = useState<KVObject[]>([]);
+    const [ formData, setFormData ] = useState<KVObject[]>([]);
 
     useEffect(() => {
         let command = 'curl';
@@ -27,9 +31,16 @@ const Options: React.FC<{
                 previous + ' -H "' + item.key + ': ' + item.value + '"', '');
         }
 
+        // TODO: Add more content types.
+        if (formData.length > 0) {
+            command += formData.reduce((previous, item) => 
+                previous + ' -F "' + item.key + '=' + item.value + '"', '');
+        }
+
         if (url !== '') {
             command += ' "' + encodeURI(url) + '"';
         }
+
         setCommand(command);
     });
 
@@ -39,7 +50,7 @@ const Options: React.FC<{
                 <Select
                     value={method}
                     setValue={setMethod}
-                    options={['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS']}
+                    options={methods}
                 />
                 <Input
                     value={url}
@@ -53,6 +64,13 @@ const Options: React.FC<{
                 title="Header"
                 addTitle="Add a new header"
             />
+            { methodsWithFormData.includes(method) ? 
+            <KV
+                value={formData}
+                setValue={setFormData}
+                title="Form"
+                addTitle="Add a new form row"
+            /> : null }
         </div>
     );
 }
